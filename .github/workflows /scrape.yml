@@ -17,7 +17,7 @@ jobs:
     - name: Scrape
       run: |        
         curl --request GET \
-          --url 'https://www.zara.com/dz/fr/product/267821547/related?ajax=true' \
+          --url https://www.zara.com/dz/fr/product/267821547/related?ajax=true \
           | jq > TheBloke.json
     - name: Commit and push
       run: |-
