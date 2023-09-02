@@ -1,0 +1,25 @@
+name: Scrape latest data
+
+on:
+  push:
+  workflow_dispatch:
+  schedule:
+    - cron:  '6,26,46 * * * *'
+
+jobs:
+  scheduled:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out this repo
+      uses: actions/checkout@v2
+    - name: Fetch latest data
+      run: |-
+        curl https://www.bershka.com/itxrest/3/catalog/store/44009501/40259533/productsArray?categoryId=1010193241&productIds=136602881%2C136602882%2C136602880%2C136602945%2C136602946%2C137650200%2C137702559%2C137702560%2C137428180%2C138915021%2C138915022%2C139014046%2C138914500%2C138914498%2C138914499&languageId=-2 | jq . > incidents.json
+    - name: Commit and push if it changed
+      run: |-
+        git config user.name "Automated"
+        git config user.email "actions@users.noreply.github.com"
+        git add -A
+        timestamp=$(date -u)
+        git commit -m "Latest data: ${timestamp}" || exit 0
+        git push
