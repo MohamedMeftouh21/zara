@@ -14,7 +14,8 @@ jobs:
       uses: actions/checkout@v2
     - name: Fetch latest data
       run: |-
-        curl https://api.leboncoin.fr/api/search-config/v1/config/categories/searchparams | jq . > incidents.json
+        curl 
+https://www.booking.com/dml/graphql?aid=2311236&label=en-dz-booking-desktop-Yt9jVJQmtovNhzYnbPj*UwS652828998364%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atikwd-334108349%3Alp9073629%3Ali%3Adec%3Adm&sid=fec02a9f881b486e12fffbed82a651b9&city=-2601889&lang=en-gb | jq . > incidents.json
     - name: Commit and push if it changed
       run: |-
         git config user.name "Automated"
