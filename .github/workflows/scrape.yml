@@ -14,7 +14,7 @@ jobs:
       uses: actions/checkout@v2
     - name: Fetch latest data
       run: |-
-        curl https://www.zara.com/dz/fr/product/267821547/related?ajax=true | jq . > incidents.json
+        curl https://www.bershka.com/itxrest/3/catalog/store/44009501/40259533/productsArray?categoryId=1010193241&productIds=136602881%2C136602882%2C136602880%2C136602945%2C136602946%2C137650200%2C137702559%2C137702560%2C137428180%2C138915021%2C138915022%2C139014046%2C138914500%2C138914498%2C138914499&languageId=-2 | jq . > incidents.json
     - name: Commit and push if it changed
       run: |-
         git config user.name "Automated"
